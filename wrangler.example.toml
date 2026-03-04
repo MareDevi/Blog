@@ -12,7 +12,7 @@ html_handling = "drop-trailing-slash" # See https://developers.cloudflare.com/wo
 enabled = true
 
 [[d1_databases]]
-binding = "DB"
+binding = "Blog"
 database_name = "$DATABASE_NAME"
 database_id = "$DATABASE_ID"
 migrations_dir = "drizzle"
