@@ -3,21 +3,21 @@ import siteConfig, { providers } from "./src/utils/config";
 const env = import.meta.env ?? {};
 
 const config = siteConfig({
-	title: "ThoughtLite",
-	prologue: "If you need a website\nthat loads fast and has great SEO, then Astro is for you.",
+	title: "MareDevi's Blog",
+	prologue: "ポケットの中指立て続け\n駆け抜け 一抜け\nバイバイ",
 	author: {
-		name: "Your Name",
-		email: "hi@your.mail",
-		link: "https://your.website"
+		name: "MareDevi",
+		email: "me@maredevi.moe",
+		link: "https://www.maredevi.moe"
 	},
-	description: "A modern Astro theme focused on content creation.",
+	description: "A place to record my thoughts and share my knowledge.",
 	copyright: {
 		type: "CC BY-NC-ND 4.0",
-		year: "2025"
+		year: "2026"
 	},
 	i18n: {
 		locales: ["en", "zh-cn", "ja"],
-		defaultLocale: "en"
+		defaultLocale: "zh-cn"
 	},
 	pagination: {
 		note: 15,

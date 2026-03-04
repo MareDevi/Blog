@@ -7,7 +7,7 @@ import { Comment } from "$db/schema";
 export const prerender = false;
 
 export const GET: APIRoute = async ({ locals }) => {
-	const db = drizzle(locals.runtime.env.DB);
+	const db = drizzle(locals.runtime.env.Blog);
 
 	const prefaces = await getCollection("preface");
 	const statements = prefaces.map(preface =>

@@ -32,7 +32,7 @@ async function unsubscribe(pass: string) {
 	if (!claim) return t("email.unsubscribe.invalid");
 
 	// Initialize database connection
-	const db = drizzle(Astro.locals.runtime.env.DB);
+	const db = drizzle(Astro.locals.runtime.env.Blog);
 
 	// Parse drifter and address from claim
 	const identity = new TextDecoder().decode(claim);
