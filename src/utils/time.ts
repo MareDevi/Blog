@@ -8,6 +8,7 @@ import { Temporal } from "temporal-polyfill";
  * @param userTimezone Whether to use user's local timezone
  * @returns ZonedDateTime object
  */
+// biome-ignore lint/correctness/noUnusedVariables: Used in namespace Time
 function Time(time?: string | Date, userTimezone: boolean = false) {
 	if (time instanceof Date) time = time.toISOString();
 
