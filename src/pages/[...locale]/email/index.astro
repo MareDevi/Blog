@@ -33,7 +33,7 @@ async function validate(ticket: string) {
 	if (!claim) return t("email.verify.invalid");
 
 	// Initialize database connection
-	const db = drizzle(Astro.locals.runtime.env.DB);
+	const db = drizzle(Astro.locals.runtime.env.Blog);
 
 	// Parse drifter and address from claim
 	const timestamp = new DataView(claim.buffer).getBigUint64(0, false);
