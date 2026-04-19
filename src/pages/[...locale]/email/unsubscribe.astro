@@ -3,7 +3,7 @@ import { and, eq } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/d1";
 import config from "$config";
 import { Email as EmailTable } from "$db/schema";
-import { AESEncryption } from "$utils/token";
+import { AESEncryption } from "$lib/token";
 import Base from "$layouts/Base.astro";
 import i18nit from "$i18n";
 
@@ -32,7 +32,7 @@ async function unsubscribe(pass: string) {
 	if (!claim) return t("email.unsubscribe.invalid");
 
 	// Initialize database connection
-	const db = drizzle(Astro.locals.runtime.env.Blog);
+	const db = drizzle(Astro.locals.runtime.env.DB);
 
 	// Parse drifter and address from claim
 	const identity = new TextDecoder().decode(claim);

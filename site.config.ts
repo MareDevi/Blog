@@ -1,4 +1,4 @@
-import siteConfig, { providers } from "./src/utils/config";
+import siteConfig, { providers } from "./src/lib/config";
 
 const env = import.meta.env ?? {};
 

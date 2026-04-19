@@ -37,7 +37,18 @@ const localedMainFont = mainFonts[locale];
 		<meta property="og:image:height" content="630" />
 		<meta name="twitter:card" content="summary_large_image" />
 
-		{article && [<meta property="article:author" content={author} />, <meta property="article:published_time" content={article.timestamp.toISOString()} />, article.section && <meta property="article:section" content={article.section} />, article.tags?.map((tag: string) => <meta property="article:tag" content={tag} />)]}
+		{
+			article && (
+				<>
+					<meta property="article:author" content={author} />
+					<meta property="article:published_time" content={article.timestamp.toISOString()} />
+					{article.section && <meta property="article:section" content={article.section} />}
+					{article.tags?.map((tag: string) => (
+						<meta property="article:tag" content={tag} />
+					))}
+				</>
+			)
+		}
 
 		<link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -49,6 +60,8 @@ const localedMainFont = mainFonts[locale];
 		<Font cssVariable="--font-the-peak-font-plus" />
 		<Font cssVariable="--font-maple-mono-nf-cn" />
 		<Font cssVariable={localedMainFont} />
+
+		<style set:html={`[lang="${locale}"]{--font-serif:var(${localedMainFont})}`}></style>
 
 		{turnstile && [<script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit&onload=onloadTurnstileCallback" async defer data-swup-ignore-script is:inline />]}
 

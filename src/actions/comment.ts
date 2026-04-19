@@ -6,11 +6,11 @@ import { drizzle } from "drizzle-orm/d1";
 import { alias } from "drizzle-orm/sqlite-core";
 import { Comment, CommentHistory, Drifter, Email, Notification, PushSubscription } from "$db/schema";
 import config, { turnstile, oauth, push, email } from "$config";
-import remark from "$utils/remark";
-import { enhash, Token } from "$utils/token";
-import { render } from "$utils/email";
-import sendEmail from "$utils/email/util";
-import sendPush from "$utils/push";
+import remark from "$lib/remark";
+import { enhash, Token } from "$lib/token";
+import { render } from "$lib/email";
+import sendEmail from "$lib/email/util";
+import sendPush from "$lib/push";
 import i18nit from "$i18n";
 
 const env = import.meta.env;
@@ -82,7 +82,7 @@ export const comment = {
 			const id = enhash(content + reply).substring(0, 8);
 
 			// Initialize database connection
-			const db = drizzle(locals.runtime.env.Blog);
+			const db = drizzle(locals.runtime.env.DB);
 
 			// Insert the new comment
 			await db.insert(Comment).values({ id, section, item, reply, drifter, nickname: passer?.nickname, timestamp: new Date(), content });
@@ -258,7 +258,7 @@ export const comment = {
 			if (!drifter) throw new ActionError({ code: "UNAUTHORIZED" });
 
 			// Initialize database connection
-			const db = drizzle(locals.runtime.env.Blog);
+			const db = drizzle(locals.runtime.env.DB);
 
 			// Store the original comment in the history table
 			const inserted = await db
@@ -302,7 +302,7 @@ export const comment = {
 			if (!drifter) throw new ActionError({ code: "UNAUTHORIZED" });
 
 			// Initialize database connection
-			const db = drizzle(locals.runtime.env.Blog);
+			const db = drizzle(locals.runtime.env.DB);
 
 			// Mark the comment as deleted by setting edit field to its own ID
 			// This creates a self-reference indicating deletion while preserving the record
@@ -318,7 +318,7 @@ export const comment = {
 		input: z.string(), // The comment ID to get history for
 		handler: async (id, { locals }) => {
 			// Initialize database connection
-			const db = drizzle(locals.runtime.env.Blog);
+			const db = drizzle(locals.runtime.env.DB);
 
 			// Fetch all history entries for this comment
 			const history = await db
@@ -347,7 +347,7 @@ export const comment = {
 			const author = env.AUTHOR_ID ?? null;
 
 			// Initialize database connection
-			const db = drizzle(locals.runtime.env.Blog);
+			const db = drizzle(locals.runtime.env.DB);
 
 			// Fetch all comments with user information
 			const comments = await db

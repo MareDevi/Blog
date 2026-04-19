@@ -2,8 +2,8 @@ import { ActionError, defineAction } from "astro:actions";
 import { z } from "astro:schema";
 import { eq, sql } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/d1";
-import { OAuth, type OAuthAccount } from "$utils/oauth";
-import { Token } from "$utils/token";
+import { OAuth, type OAuthAccount } from "$lib/oauth";
+import { Token } from "$lib/token";
 import { Drifter, Email } from "$db/schema";
 import { oauth } from "$config";
 
@@ -22,7 +22,7 @@ export const drifter = {
 			}
 
 			// Initialize database connection
-			const db = drizzle(locals.runtime.env.Blog);
+			const db = drizzle(locals.runtime.env.DB);
 
 			// Fetch user profile data from database
 			const drifter = await db
@@ -54,7 +54,7 @@ export const drifter = {
 			if (!id) throw new ActionError({ code: "UNAUTHORIZED" });
 
 			// Initialize database connection
-			const db = drizzle(locals.runtime.env.Blog);
+			const db = drizzle(locals.runtime.env.DB);
 
 			// Get current OAuth tokens and provider info
 			const drifter = await db
@@ -106,7 +106,7 @@ export const drifter = {
 			if (!id) throw new ActionError({ code: "UNAUTHORIZED" });
 
 			// Initialize database connection
-			const db = drizzle(locals.runtime.env.Blog);
+			const db = drizzle(locals.runtime.env.DB);
 
 			// Update user settings in database
 			await db.update(Drifter).set({ homepage }).where(eq(Drifter.id, id));
@@ -124,7 +124,7 @@ export const drifter = {
 			if (!id) throw new ActionError({ code: "UNAUTHORIZED" });
 
 			// Initialize database connection
-			const db = drizzle(locals.runtime.env.Blog);
+			const db = drizzle(locals.runtime.env.DB);
 
 			// Get user's OAuth provider and access token for revocation
 			const drifter = await db.select({ provider: Drifter.provider, access: Drifter.access }).from(Drifter).where(eq(Drifter.id, id)).get();

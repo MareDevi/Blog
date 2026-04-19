@@ -5,9 +5,9 @@ import { and, eq, ne } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/d1";
 import { email as enabled } from "$config";
 import { Email } from "$db/schema";
-import { render } from "$utils/email";
-import sendEmail from "$utils/email/util";
-import { AESEncryption, Token } from "$utils/token";
+import { render } from "$lib/email";
+import sendEmail from "$lib/email/util";
+import { AESEncryption, Token } from "$lib/token";
 import i18nit from "$i18n";
 
 export const email = {
@@ -30,7 +30,7 @@ export const email = {
 			if (!success) throw new ActionError({ code: "TOO_MANY_REQUESTS" });
 
 			// Initialize database connection
-			const db = drizzle(locals.runtime.env.Blog);
+			const db = drizzle(locals.runtime.env.DB);
 
 			if (address) {
 				// Insert or update email record with pending state
@@ -103,7 +103,7 @@ export const email = {
 			if (!drifter) throw new ActionError({ code: "UNAUTHORIZED" });
 
 			// Initialize database connection
-			const db = drizzle(locals.runtime.env.Blog);
+			const db = drizzle(locals.runtime.env.DB);
 
 			// Remove email record
 			await db.delete(Email).where(eq(Email.drifter, drifter));

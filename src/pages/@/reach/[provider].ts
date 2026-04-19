@@ -2,8 +2,8 @@ import type { APIRoute } from "astro";
 import { generateCodeVerifier, generateState } from "arctic";
 import { sql } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/d1";
-import { OAuth, type OAuthAccount } from "$utils/oauth";
-import { random, Token } from "$utils/token";
+import { OAuth, type OAuthAccount } from "$lib/oauth";
+import { random, Token } from "$lib/token";
 import { Drifter, Email } from "$db/schema";
 
 export const prerender = false;
@@ -26,7 +26,7 @@ export const GET: APIRoute = async ({ cookies, params, url, locals, redirect, re
 		// Exchange authorization code for user account information
 		const user: OAuthAccount = await new OAuth(provider).validate(code, escort.codeVerifier);
 
-		const db = drizzle(locals.runtime.env.Blog);
+		const db = drizzle(locals.runtime.env.DB);
 		// Insert or update user account in database with conflict resolution
 		const drifter = await db
 			.insert(Drifter)
