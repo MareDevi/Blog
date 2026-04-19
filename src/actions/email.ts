@@ -30,7 +30,7 @@ export const email = {
 			if (!success) throw new ActionError({ code: "TOO_MANY_REQUESTS" });
 
 			// Initialize database connection
-			const db = drizzle(locals.runtime.env.DB);
+			const db = drizzle(locals.runtime.env.Blog);
 
 			if (address) {
 				// Insert or update email record with pending state
@@ -103,7 +103,7 @@ export const email = {
 			if (!drifter) throw new ActionError({ code: "UNAUTHORIZED" });
 
 			// Initialize database connection
-			const db = drizzle(locals.runtime.env.DB);
+			const db = drizzle(locals.runtime.env.Blog);
 
 			// Remove email record
 			await db.delete(Email).where(eq(Email.drifter, drifter));

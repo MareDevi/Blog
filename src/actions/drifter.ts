@@ -22,7 +22,7 @@ export const drifter = {
 			}
 
 			// Initialize database connection
-			const db = drizzle(locals.runtime.env.DB);
+			const db = drizzle(locals.runtime.env.Blog);
 
 			// Fetch user profile data from database
 			const drifter = await db
@@ -54,7 +54,7 @@ export const drifter = {
 			if (!id) throw new ActionError({ code: "UNAUTHORIZED" });
 
 			// Initialize database connection
-			const db = drizzle(locals.runtime.env.DB);
+			const db = drizzle(locals.runtime.env.Blog);
 
 			// Get current OAuth tokens and provider info
 			const drifter = await db
@@ -106,7 +106,7 @@ export const drifter = {
 			if (!id) throw new ActionError({ code: "UNAUTHORIZED" });
 
 			// Initialize database connection
-			const db = drizzle(locals.runtime.env.DB);
+			const db = drizzle(locals.runtime.env.Blog);
 
 			// Update user settings in database
 			await db.update(Drifter).set({ homepage }).where(eq(Drifter.id, id));
@@ -124,7 +124,7 @@ export const drifter = {
 			if (!id) throw new ActionError({ code: "UNAUTHORIZED" });
 
 			// Initialize database connection
-			const db = drizzle(locals.runtime.env.DB);
+			const db = drizzle(locals.runtime.env.Blog);
 
 			// Get user's OAuth provider and access token for revocation
 			const drifter = await db.select({ provider: Drifter.provider, access: Drifter.access }).from(Drifter).where(eq(Drifter.id, id)).get();

@@ -14,7 +14,7 @@ export const push = {
 		}),
 		handler: async ({ endpoint, p256dh, auth }, { locals }) => {
 			// Initialize database connection
-			const db = drizzle(locals.runtime.env.DB);
+			const db = drizzle(locals.runtime.env.Blog);
 
 			// Insert new push subscription
 			// Use onConflictDoNothing to handle duplicate subscriptions gracefully
@@ -39,7 +39,7 @@ export const push = {
 		input: z.string().url(), // Push service endpoint URL to remove
 		handler: async (endpoint, { locals }) => {
 			// Initialize database connection
-			const db = drizzle(locals.runtime.env.DB);
+			const db = drizzle(locals.runtime.env.Blog);
 
 			// Delete the specific notification subscription
 			await db.delete(PushSubscription).where(eq(PushSubscription.endpoint, endpoint));
@@ -51,7 +51,7 @@ export const push = {
 		input: z.string().url(), // Push service endpoint URL to check
 		handler: async (endpoint, { locals }) => {
 			// Initialize database connection
-			const db = drizzle(locals.runtime.env.DB);
+			const db = drizzle(locals.runtime.env.Blog);
 
 			// Query for existing subscription matching user and endpoint
 			const subscription = await db
