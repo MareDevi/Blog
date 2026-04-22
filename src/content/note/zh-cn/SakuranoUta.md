@@ -135,7 +135,7 @@ draft: false
 
 ![](https://static.maredevi.fun/2026-04-22-121031_hyprshot.png)
 
-## IV What is mind? No matter. What is matter? Never mind
+## What is mind? No matter. What is matter? Never mind
 
 本章不仅是草薙健一郎的过往溯源，更是全作探讨 **“艺术与现实、物质与精神”** 核心矛盾的精神高地。
 

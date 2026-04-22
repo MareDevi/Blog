@@ -132,7 +132,7 @@ GalGame愛好家の間で、この作品の名を知らぬ者は稀だろう。�
 
 ![](https://static.maredevi.fun/2026-04-22-121031_hyprshot.png)
 
-## IV What is mind? No matter. What is matter? Never mind（精神とは何か？ 関係ない。物質とは何か？ 気にするな）
+## What is mind? No matter. What is matter? Never mind（精神とは何か？ 関係ない。物質とは何か？ 気にするな）
 
 この章は草薙健一郎の過去への遡及であるだけでなく、本作が探求する**「芸術と現実、物質と精神」**の核心的矛盾における精神的高地である。
 

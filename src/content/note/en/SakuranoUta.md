@@ -132,7 +132,7 @@ In this route, the bottom card of the Millennium Cherry Blossom was also complet
 
 ![](https://static.maredevi.fun/2026-04-22-121031_hyprshot.png)
 
-## IV What is mind? No matter. What is matter? Never mind
+## What is mind? No matter. What is matter? Never mind
 
 This chapter is not only a look back at Kusanagi Kenichiro's past but also the spiritual high ground where the core contradiction of **"art and reality, matter and spirit"** is discussed in the whole work.
 
