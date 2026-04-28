@@ -20,7 +20,7 @@ const config = siteConfig({
 		defaultLocale: "zh-cn"
 	},
 	pagination: {
-		note: 15,
+		note: 10,
 		jotting: 24
 	},
 	heatmap: {
