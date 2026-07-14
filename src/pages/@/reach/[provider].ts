@@ -1,4 +1,5 @@
 import type { APIRoute } from "astro";
+import { env } from "cloudflare:workers";
 import { generateCodeVerifier, generateState } from "arctic";
 import { sql } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/d1";
@@ -8,7 +9,7 @@ import { Drifter, Email } from "$db/schema";
 
 export const prerender = false;
 
-export const GET: APIRoute = async ({ cookies, params, url, locals, redirect, request }) => {
+export const GET: APIRoute = async ({ cookies, params, url, redirect, request }) => {
 	const { provider } = params;
 
 	const code = url.searchParams.get("code");
@@ -26,7 +27,7 @@ export const GET: APIRoute = async ({ cookies, params, url, locals, redirect, re
 		// Exchange authorization code for user account information
 		const user: OAuthAccount = await new OAuth(provider).validate(code, escort.codeVerifier);
 
-		const db = drizzle(locals.runtime.env.Blog);
+		const db = drizzle(env.Blog);
 		// Insert or update user account in database with conflict resolution
 		const drifter = await db
 			.insert(Drifter)

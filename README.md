@@ -135,11 +135,7 @@ Content creation is centralized in the `src/content` directory, mainly including
 - `preface` - Displayed on the homepage as the first impression
 - `information` - Containing various descriptive content
 
-<<<<<<< HEAD
-For details, refer to the [Content Creation Guide](src/content/note/en/content.md).
-=======
 For details, refer to the [Content Creation Guide](https://thought-lite.ttio.workers.dev/note/content).
->>>>>>> theme/cloudflare
 
 ## 🤝 Contributing
 
